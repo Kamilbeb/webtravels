@@ -1,25 +1,19 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 import java.util.List;
 
 
 
-public class SingUpTest {
+public class SingUpTest extends BaseTest{
+
+
     @Test
-    public void singUp() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
-        driver.get("http://www.kurs-selenium.pl/demo/");
+    public void singUpTest() {
+
         driver.findElements(By.xpath("//li[@id='li_myaccount']")).stream()
                 .filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         driver.findElements(By.xpath("//a[text()='  Sign Up']")).get(1).click();
@@ -39,15 +33,12 @@ public class SingUpTest {
         Assert.assertTrue(heading.getText().contains(lastName));
         Assert.assertEquals(heading.getText(),"Hi, Kamil Testowy");
 
+
     }
 
     @Test
-    public void singUpEmptyForm() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
-        driver.get("http://www.kurs-selenium.pl/demo/");
+    public void singUpEmptyFormTest() {
+
         driver.findElements(By.xpath("//li[@id='li_myaccount']")).stream()
                 .filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         driver.findElements(By.xpath("//a[text()='  Sign Up']")).get(1).click();
@@ -66,12 +57,8 @@ public class SingUpTest {
 
     }
     @Test
-    public void singUpInvalidEmail() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
-        driver.get("http://www.kurs-selenium.pl/demo/");
+    public void singUpInvalidEmailTest() {
+
         driver.findElements(By.xpath("//li[@id='li_myaccount']")).stream()
                 .filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         driver.findElements(By.xpath("//a[text()='  Sign Up']")).get(1).click();
