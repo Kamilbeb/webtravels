@@ -18,7 +18,10 @@ public class HotelSearchTest {
         driver.findElement(By.xpath("//div[@id='select2-drop']//input")).sendKeys("Dubai");
         driver.findElement(By.xpath("//span[@class='select2-match' and text()='Dubai']")).click();
         driver.findElement(By.name("checkin")).sendKeys("07/08/2023");
-        driver.findElement(By.name("checkout")).sendKeys("20/08/2023");
+        driver.findElement(By.name("checkout")).click();
+        //ustawianie daty za pomocą kalendarza
+        driver.findElements(By.xpath("//td[@class='day ' and text()='10']"))
+                .stream().filter(el -> el.isDisplayed()).findFirst().ifPresent(el -> el.click()); //tworzymy listę elementów i odfiltrowujemy element
 
     }
 }
