@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class HotelSearchTest {
     @Test
-    public void searchHotel() throws InterruptedException {
+    public void searchHotel() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -36,9 +36,9 @@ public class HotelSearchTest {
                 .stream().map(el -> el.getAttribute("textContent")).collect(Collectors.toList());
 
 
-        Assert.assertEquals("Jumeirah Beach Hotel",hotelNames.get(0));
-        Assert.assertEquals("Oasis Beach Tower",hotelNames.get(1));
-        Assert.assertEquals("Rose Rayhaan Rotana",hotelNames.get(2));
-        Assert.assertEquals("Hyatt Regency Perth",hotelNames.get(3));
+        Assert.assertEquals(hotelNames.get(0),"Jumeirah Beach Hotel");
+        Assert.assertEquals(hotelNames.get(1),"Oasis Beach Tower");
+        Assert.assertEquals(hotelNames.get(2),"Rose Rayhaan Rotana");
+        Assert.assertEquals(hotelNames.get(3),"Hyatt Regency Perth");
     }
 }
