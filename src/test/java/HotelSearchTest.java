@@ -23,5 +23,9 @@ public class HotelSearchTest {
         driver.findElements(By.xpath("//td[@class='day ' and text()='10']"))
                 .stream().filter(el -> el.isDisplayed()).findFirst().ifPresent(el -> el.click()); //tworzymy listę elementów i odfiltrowujemy element
 
+        driver.findElement(By.id("travellersInput")).click();
+        driver.findElement(By.id("adultPlusBtn")).click();
+        driver.findElement(By.id("childPlusBtn")).click();
+
     }
 }
