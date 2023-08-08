@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pl.seleniumdemo.pages.HotelSearchPage;
+import pl.seleniumdemo.pages.SignUpPage;
 
 import java.util.List;
 
@@ -15,21 +17,20 @@ public class SingUpTest extends BaseTest {
 
     @Test
     public void singUpTest() {
-
-        driver.findElements(By.xpath("//li[@id='li_myaccount']")).stream()
-                .filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
-        driver.findElements(By.xpath("//a[text()='  Sign Up']")).get(1).click();
-
         String lastName = "Testowy";
         int randomNumber = (int) (Math.random()*1000);
         String email = "nowytester"+randomNumber+"@tester.pl";
-        driver.findElement(By.name("firstname")).sendKeys("Kamil");
-        driver.findElement(By.name("lastname")).sendKeys(lastName);
-        driver.findElement(By.name("phone")).sendKeys("111111111");
-        driver.findElement(By.name("email")).sendKeys(email);
-        driver.findElement(By.name("password")).sendKeys("Test1234");
-        driver.findElement(By.name("confirmpassword")).sendKeys("Test1234");
-        driver.findElement(By.xpath("//button[@type = 'submit' and text()=' Sign Up']")).click();
+
+        HotelSearchPage hotelSearchPage = new HotelSearchPage(driver);
+        hotelSearchPage.openSingUpForm();
+        SignUpPage signUpPage = new SignUpPage(driver);
+        signUpPage.setFirstName("Kamil");
+        signUpPage.setLastName(lastName);
+        signUpPage.setPhone("111111111");
+        signUpPage.setEmail(email);
+        signUpPage.setPassword("Test1234");
+        signUpPage.confirmPassword("Test1234");
+        signUpPage.singUp();
 
         WebElement heading = driver.findElement(By.xpath("//h3[@class='RTL']"));
         Assert.assertTrue(heading.getText().contains(lastName));
