@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pl.seleniumdemo.utils.DriverFactory;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class BaseTest {
@@ -12,9 +13,9 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setup() {
+    public void setup() throws IOException {
 
-        driver = DriverFactory.getDriver("firefox");
+        driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("http://www.kurs-selenium.pl/demo/");
