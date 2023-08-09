@@ -10,7 +10,7 @@ import pl.seleniumdemo.pages.SignUpPage;
 import java.util.List;
 
 
-public class SingUpTest extends BaseTest {
+public class SignUpTest extends BaseTest {
 
 
     @Test
