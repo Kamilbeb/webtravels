@@ -12,7 +12,7 @@ import pl.seleniumdemo.utils.SeleniumHelper;
 import java.util.List;
 
 
-public class SingUpTest extends BaseTest {
+public class SignUpTest extends BaseTest {
 
 
     @Test
