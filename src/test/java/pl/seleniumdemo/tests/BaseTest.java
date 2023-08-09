@@ -16,7 +16,6 @@ public class BaseTest {
     public void setup() throws IOException {
 
         driver = DriverFactory.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("http://www.kurs-selenium.pl/demo/");
     }
