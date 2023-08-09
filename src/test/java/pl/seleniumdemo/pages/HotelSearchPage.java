@@ -43,40 +43,41 @@ public class HotelSearchPage {
 
     private WebDriver driver;
 
-    public HotelSearchPage(WebDriver driver){
+    public HotelSearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void setCity(String cityName){
+
+    public void setCity(String cityName) {
         searchHotelSpan.click();
         searchHotelInput.sendKeys(cityName);
-        String xpath = String.format("//span[@class='select2-match' and text()='%s']",cityName);
+        String xpath = String.format("//span[@class='select2-match' and text()='%s']", cityName);
         driver.findElement(By.xpath(xpath)).click();
 
     }
 
-    public void setDates(String checkin, String checkout){
+    public void setDates(String checkin, String checkout) {
         checkinInput.sendKeys(checkin);
         checkoutInput.sendKeys(checkout);
     }
 
-    public void setTravellers(int adultsToAdd, int childToAdd){
+    public void setTravellers(int adultsToAdd, int childToAdd) {
         travellersInput.click();
-        addTraveler(adultPlusBtn,adultsToAdd);
-        addTraveler(childPlusBtn,childToAdd);
+        addTraveler(adultPlusBtn, adultsToAdd);
+        addTraveler(childPlusBtn, childToAdd);
     }
 
-    private void addTraveler (WebElement travelerBtn, int numberOfTravelers){
-        for(int i=0; i<numberOfTravelers;i++) {
+    private void addTraveler(WebElement travelerBtn, int numberOfTravelers) {
+        for (int i = 0; i < numberOfTravelers; i++) {
             travelerBtn.click();
         }
     }
 
-    public void performSearch(){
+    public void performSearch() {
         searchButton.click();
     }
 
-    public void openSingUpForm(){
+    public void openSingUpForm() {
         myAccountLink.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         singUpLink.get(1).click();
     }

@@ -11,14 +11,14 @@ public class HotelSearchWithoutTest extends BaseTest {
     public void searchHotelWithoutNameTest() {
 
         HotelSearchPage hotelSearchPage = new HotelSearchPage(driver);
-        hotelSearchPage.setDates("07/08/2023","10/08/2023");
-        hotelSearchPage.setTravellers(0,1);
+        hotelSearchPage.setDates("07/08/2023", "10/08/2023");
+        hotelSearchPage.setTravellers(0, 1);
         hotelSearchPage.performSearch();
 
         ResultsPage resultsPage = new ResultsPage(driver);
 
         Assert.assertTrue(resultsPage.resultHeading.isDisplayed());
-        Assert.assertEquals(resultsPage.getHeadingText(),"No Results Found");
+        Assert.assertEquals(resultsPage.getHeadingText(), "No Results Found");
 
 
     }

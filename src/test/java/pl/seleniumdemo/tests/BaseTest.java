@@ -13,7 +13,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -22,7 +22,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }
